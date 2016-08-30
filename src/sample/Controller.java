@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
+import java.security.Key;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -22,6 +25,12 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         todoList.setItems(todoItems);
+    }
+
+    public void handleEnterButton(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            addItem();
+        }
     }
 
     public void addItem() {

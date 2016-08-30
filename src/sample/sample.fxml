@@ -13,7 +13,7 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="todoText" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="todoText" onKeyPressed="#handleEnterButton" HBox.hgrow="ALWAYS" />
             <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#addItem" text="Add" />
             <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
             <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleItem" text="Toggle" />
