@@ -17,6 +17,9 @@
             <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#addItem" text="Add" />
             <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
             <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleItem" text="Toggle" />
+            <Button mnemonicParsing="false" onAction="#markAllDone" text="Mark all &quot;done&quot;" />
+            <Button mnemonicParsing="false" onAction="#markAllNotDone" text="Mark all &quot;not done&quot;" />
+            <Button mnemonicParsing="false" onAction="#toggleAll" text="Toggle all" />
          </children>
       </HBox>
       <ListView fx:id="todoList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />

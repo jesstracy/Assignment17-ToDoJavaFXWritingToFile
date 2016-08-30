@@ -55,4 +55,30 @@ public class Controller implements Initializable {
         }
     }
 
+    public void markAllDone() {
+        System.out.println("Marking all items as \"done\"");
+        for (ToDoItem toDoItem : todoItems) {
+            toDoItem.isDone = true;
+        }
+        todoList.setItems(null);
+        todoList.setItems(todoItems);
+    }
+
+    public void markAllNotDone() {
+        System.out.println("Marking all items as \"not done\"");
+        for (ToDoItem toDoItem : todoItems) {
+            toDoItem.isDone = false;
+        }
+        todoList.setItems(null);
+        todoList.setItems(todoItems);
+    }
+
+    public void toggleAll() {
+        System.out.println("Toggling all...");
+        for (ToDoItem toDoItem : todoItems) {
+            toDoItem.isDone = !toDoItem.isDone;
+        }
+        todoList.setItems(null);
+        todoList.setItems(todoItems);
+    }
 }
