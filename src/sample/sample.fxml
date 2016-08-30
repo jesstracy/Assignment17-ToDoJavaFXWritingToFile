@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -14,12 +15,12 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <TextField fx:id="todoText" onKeyPressed="#handleEnterButton" HBox.hgrow="ALWAYS" />
-            <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#addItem" text="Add" />
-            <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#removeItem" text="Remove" />
-            <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleItem" text="Toggle" />
-            <Button mnemonicParsing="false" onAction="#markAllDone" text="Mark all &quot;done&quot;" />
-            <Button mnemonicParsing="false" onAction="#markAllNotDone" text="Mark all &quot;not done&quot;" />
-            <Button mnemonicParsing="false" onAction="#toggleAll" text="Toggle all" />
+            <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#addItem" text="Add" textFill="#12bf2c" />
+            <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#removeItem" text="Remove" textFill="#f80303" />
+            <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleItem" text="Toggle" textFill="#0055ffd9" />
+            <Button mnemonicParsing="false" onAction="#markAllDone" text="Mark all &quot;done&quot;" textAlignment="CENTER" textFill="#eb9a04" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#markAllNotDone" text="Mark all &quot;not done&quot;" textAlignment="CENTER" textFill="#a504e4" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#toggleAll" text="Toggle all" textAlignment="CENTER" textFill="#f8ff00" textOverrun="WORD_ELLIPSIS" wrapText="true" />
          </children>
       </HBox>
       <ListView fx:id="todoList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />

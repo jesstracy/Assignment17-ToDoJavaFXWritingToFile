@@ -1,0 +1,6 @@
+toDoItem.text=Clean house
+toDoItem.isDone=true
+toDoItem.text=Go shopping
+toDoItem.isDone=false
+toDoItem.text=Homework
+toDoItem.isDone=false
