@@ -1,8 +1,6 @@
-toDoItem.text=Clean house
-toDoItem.isDone=true
-toDoItem.text=Homework
+toDoItem.text=test 2
 toDoItem.isDone=false
-toDoItem.text=Go to store
+toDoItem.text=test 3
 toDoItem.isDone=true
-toDoItem.text=Make dinner
-toDoItem.isDone=false
+toDoItem.text=make dinner
+toDoItem.isDone=true

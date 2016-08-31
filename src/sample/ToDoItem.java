@@ -6,6 +6,7 @@ package sample;
 public class ToDoItem {
     String text;
     boolean isDone;
+    String owner;
 
     public ToDoItem(String text) {
         this.text = text;
@@ -42,6 +43,14 @@ public class ToDoItem {
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }
 

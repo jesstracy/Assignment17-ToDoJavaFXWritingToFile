@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Controller implements Initializable {
+    private String currentUser;
     @FXML
     ListView todoList;
 
@@ -30,7 +31,7 @@ public class Controller implements Initializable {
     class User {
         private String userName;
 
-//        private ArrayList<ToDoItem> toDoItems = new ArrayList<ToDoItem>();
+        private ArrayList<ToDoItem> toDoItemsUser = new ArrayList<ToDoItem>();
 //        ObservableList<ToDoItem> todoItems = FXCollections.observableArrayList();
 
         public User(String userName) {
@@ -45,12 +46,30 @@ public class Controller implements Initializable {
             this.userName = userName;
         }
 
-        public void addTodoItem(ToDoItem item) {
-            todoItems.add(item);
-        }
+//        public void addTodoItem(ToDoItem item) {
+//            todoItems.add(item);
+//        }
 
         public ObservableList<ToDoItem> getTodoItems() {
             return todoItems;
+        }
+
+        public void putUsersListInObservableFile() {for (ToDoItem item : toDoItemsUser) {
+                item.setOwner(this.userName);
+                todoItems.add(item);
+            }
+        }
+
+        public ArrayList<ToDoItem> getToDoItemsUser() {
+            return toDoItemsUser;
+        }
+
+        public void setToDoItemsUser(ArrayList<ToDoItem> toDoItemsUser) {
+            this.toDoItemsUser = toDoItemsUser;
+        }
+
+        public void addToDoItemUser(ToDoItem item) {
+            this.toDoItemsUser.add(item);
         }
     }
 
@@ -79,7 +98,8 @@ public class Controller implements Initializable {
                             userCurrentLine = userFileScanner.nextLine();
                             isDone = Boolean.valueOf(userCurrentLine.split("=")[1]);
                             ToDoItem myItem = new ToDoItem(text, isDone);
-                            returningUser.addTodoItem(myItem);
+//                            returningUser.addTodoItem(myItem);
+                            returningUser.addToDoItemUser(myItem);
                         }
                     } catch (Exception exception) {
                         exception.printStackTrace();
@@ -102,6 +122,7 @@ public class Controller implements Initializable {
                 myUser = user;
                 System.out.println("Welcome back, " + userName + "!");
                 alreadyUser = true;
+                user.putUsersListInObservableFile();
             }
         }
         if (!alreadyUser) {
@@ -109,6 +130,7 @@ public class Controller implements Initializable {
             myUser = new User(userName);
             users.add(myUser);
         }
+        currentUser = userName;
         todoList.setItems(todoItems);
     }
 
@@ -183,22 +205,28 @@ public class Controller implements Initializable {
         try {
             File listOfUsers = new File("ListOfUsers.txt");
             FileWriter myFileWriter = new FileWriter(listOfUsers);
+            // It's doing it right now for everyuser, and I just want it to do it for the current user, but I can't pass in as a parameter.
             for (User user : users) {
                 //Write user's name in list of users file
                 myFileWriter.write(user.getUserName() + ",");
 
-                //AND print the user's todos in their own file
-                File userFile = new File(user.getUserName() + ".txt");
-                FileWriter myUserFileWriter = new FileWriter(userFile);
-                for (ToDoItem item : user.getTodoItems()) {
-                    myUserFileWriter.write("toDoItem.text=" + item.getText() + "\n");
-                    myUserFileWriter.write("toDoItem.isDone=" + item.isDone() + "\n");
-                }
-                myUserFileWriter.close();
             }
             myFileWriter.close();
+            printUserList();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
+
+    public void printUserList() throws Exception {
+        //AND print the user's todos in their own file
+        File userFile = new File(currentUser + ".txt");
+        FileWriter myUserFileWriter = new FileWriter(userFile);
+        for (ToDoItem item : todoItems) {
+            myUserFileWriter.write("toDoItem.text=" + item.getText() + "\n");
+            myUserFileWriter.write("toDoItem.isDone=" + item.isDone() + "\n");
+        }
+        myUserFileWriter.close();
+    }
 }
+
